@@ -35,17 +35,26 @@ public class MyArrayList<T> implements MyList<T> {
         // Replace the old array with the new array
         arr = newArr;
     }
-
+    // Removes all elements from the list
     public void clear() {
-
+        this.arr = new Object[5]; // Create a new array with the default capacity of 5
+        this.size = 0; // Reset the size of the list to 0
     }
-
+    // Returns true if the list contains the specified element, false otherwise
     public boolean contains(T e) {
+        for (int i = 0; i < size; i++) { // Iterate over all elements in the list
+            if (arr[i].equals(e)) { // If the current element is equal to the specified element
+                return true; // return true
+            }
+        }
         return false;
     }
 
     public T get(int index) {
-        return null;
+        if (index < 0 || index >= size) { // if the given index is within the valid range of indices for the list. If the index is invalid,
+            throw new IndexOutOfBoundsException(); // throws an IndexOutOfBoundsException with an appropriate error message.
+        };
+        return (T) arr[index];
     }
 
     public int indexOf(T e) {
