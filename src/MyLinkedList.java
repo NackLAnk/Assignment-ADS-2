@@ -1,7 +1,8 @@
 public class MyLinkedList<E> implements MyLinkList<E>{
-    private Node<E> head, tail;
-    private int size;
+    private Node<E> head, tail; // Head and Tail of the linked list
+    private int size; // Size of the linked list
 
+    // Node class to represent each element of the linked list
     private static class Node<E> {
         private E element;
         private Node<E> next;
@@ -10,25 +11,27 @@ public class MyLinkedList<E> implements MyLinkList<E>{
             this.element = element;
             this.next = next;
         }
-
+         // Returns the element stored in this node.
         public E getElement() {
             return element;
         }
-
+         //Returns the reference to the next node in the linked list.
         public Node<E> getNext() {
             return next;
         }
-
+         // Sets the reference to the next node in the linked list.
         public void setNext(Node<E> next) {
             this.next = next;
         }
     }
+    // Constructs an empty linked list.
     public MyLinkedList() {
         head = null;
         tail = null;
         size = 0;
     }
 
+    // Adds a new element at the end of this list.
     public void add(E e) {
         Node<E> newNode = new Node<>(e, null);
         if (isEmpty()) {
@@ -40,6 +43,7 @@ public class MyLinkedList<E> implements MyLinkList<E>{
         size++;
     }
 
+    // Adds a new element at the specified index in this list.
     public void add(int index, E e) {
         checkIndexForAdd(index);
         if (index == size) {
@@ -60,21 +64,35 @@ public class MyLinkedList<E> implements MyLinkList<E>{
         }
         size++;
     }
+
+    // The method is used to check the index of an element before adding it to the collection
     private void checkIndexForAdd(int index) {
-        if (index < 0 || index > size) {
-            throw new IndexOutOfBoundsException();
+        if (index < 0 || index > size) {// If the index is less than zero or greater than the current size of the collection,
+            throw new IndexOutOfBoundsException();// then an IndexOutOfBoundsException is thrown.
         }
     }
 
+    // Returns the number of elements in this list.
     public int size() {
-        return 0;
+        return size;
     }
 
+    // Removes all of the elements from this list.
     public void clear() {
-
+        head = null;
+        tail = null;
+        size = 0;
     }
 
+    // Returns true if this list contains the specified element.
     public boolean contains(E e) {
+        Node<E> current = head;
+        while (current != null) {
+            if (current.getElement().equals(e)) {
+                return true;
+            }
+            current = current.getNext();
+        }
         return false;
     }
 
