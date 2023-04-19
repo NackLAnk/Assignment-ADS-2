@@ -125,7 +125,12 @@ public class MyLinkedList<E> implements MyLinkList<E>{
         return -1;
     }
 
-     // Returns the index of the last occurrence of the specified element
+    //Returns true if this list contains no elements.
+    public boolean isEmpty() {
+        return size == 0;
+    }
+
+    // Returns the index of the last occurrence of the specified element
      // in this list, or -1 if this list does not contain the element.
     public int lastIndexOf(E e) {
         Node<E> current = head;
@@ -139,7 +144,27 @@ public class MyLinkedList<E> implements MyLinkList<E>{
         return lastIndex;
     }
 
+     //Removes the first occurrence of the specified element from this list,
+     //if it is present. If the list does not contain the element, it is unchanged.
     public boolean remove(E e) {
+        Node<E> current = head;
+        Node<E> prev = null;
+        while (current != null) {
+            if (current.getElement().equals(e)) {
+                if (prev == null) {
+                    head = current.getNext();
+                } else {
+                    prev.setNext(current.getNext());
+                }
+                if (current == tail) {
+                    tail = prev;
+                }
+                size--;
+                return true;
+            }
+            prev = current;
+            current = current.getNext();
+        }
         return false;
     }
 
