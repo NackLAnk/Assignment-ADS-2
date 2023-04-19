@@ -7,4 +7,12 @@ public interface MyLinkList<E> {
 
     // Return the number of elements in this list
     int size();
+    // Clear the list
+    void clear();
+
+    // Return true if this list contains the element
+    boolean contains(E e);
+
+    // Return the element from this list at the specified index
+    E get(int index);
 }
