@@ -3,7 +3,7 @@ public interface MyList<T> {
     void add(T e);
 
     // Add a new element at the specified index in this list.
-    void add(int index, T e);
+    void add(T e,int index);
 
     // Clear the list
     void clear();
