@@ -97,11 +97,30 @@ public class MyLinkedList<E> implements MyLinkList<E>{
     }
 
     public E get(int index) {
-        return null;
+        checkIndex(index);
+        Node<E> current = head;
+        for (int i = 0; i < index; i++) {
+            current = current.getNext();
+        }
+        return current.getElement();
+    }
+
+    // The method is used to check the index of an element before getting it from the collection
+    private void checkIndex(int index) {
+        if (index < 0 || index >= size) {// If the index is less than zero or greater than or equal to the current size of the collection,
+            throw new IndexOutOfBoundsException();// then an IndexOutOfBoundsException is thrown.
+        }
     }
 
     public int indexOf(E e) {
-        return 0;
+        Node<E> current = head;
+        for (int i = 0; i < size; i++) {
+            if (current.getElement().equals(e)) {
+                return i;
+            }
+            current = current.getNext();
+        }
+        return -1;
     }
 
     public boolean isEmpty() {
