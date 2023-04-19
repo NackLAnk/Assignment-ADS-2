@@ -168,8 +168,32 @@ public class MyLinkedList<E> implements MyLinkList<E>{
         return false;
     }
 
+     // Removes the element at the specified position in this list.
+     // Shifts any subsequent elements to the left (subtracts one from their indices).
     public E remove(int index) {
-        return null;
+        checkIndexForRemove(index);
+        Node<E> current = head;
+        Node<E> prev = null;
+        for (int i = 0; i < index; i++) {
+            prev = current;
+            current = current.getNext();
+        }
+        if (prev == null) {
+            head = current.getNext();
+        } else {
+            prev.setNext(current.getNext());
+        }
+        if (current == tail) {
+            tail = prev;
+        }
+        size--;
+        return current.getElement();
+    }
+     //Throws an IndexOutOfBoundsException if the index is out of range for removing an element.
+    private void checkIndexForRemove(int index) {
+        if (index < 0 || index >= size()) {
+            throw new IndexOutOfBoundsException("Invalid index for remove operation: " + index);
+        }
     }
 
     public Object set(int index, E e) {
