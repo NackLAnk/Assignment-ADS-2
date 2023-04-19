@@ -1,5 +1,6 @@
 public class MyLinkedList<E> implements MyLinkList<E>{
-    private Node<E> head, tail; // Head and Tail of the linked list
+    private Node<E> head;
+    private Node<E> tail; // Head and Tail of the linked list
     private int size; // Size of the linked list
 
     // Node class to represent each element of the linked list
@@ -22,6 +23,10 @@ public class MyLinkedList<E> implements MyLinkList<E>{
          // Sets the reference to the next node in the linked list.
         public void setNext(Node<E> next) {
             this.next = next;
+        }
+
+        public void setElement(E element) {
+            this.element = element;
         }
     }
     // Constructs an empty linked list.
@@ -195,8 +200,15 @@ public class MyLinkedList<E> implements MyLinkList<E>{
             throw new IndexOutOfBoundsException("Invalid index for remove operation: " + index);
         }
     }
-
-    public Object set(int index, E e) {
-        return null;
+    // Replaces the element at the specified position in this list with the specified element.
+    public E set(int index, E element) {
+        checkIndexForRemove(index);
+        Node<E> current = head;
+        for (int i = 0; i < index; i++) {
+            current = current.getNext();
+        }
+        E oldElement = current.getElement();
+        current.setElement(element);
+        return oldElement;
     }
 }
