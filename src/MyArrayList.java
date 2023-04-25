@@ -108,4 +108,17 @@ public class MyArrayList<T> implements MyList<T> {
     public void sort() {
         Arrays.sort(arr, 0, size); //  sorts the elements of the MyArrayList instance in ascending order.
     }
+    public void dublicateDeleater() {
+        //Object[] Darr = new Object[arr.length];
+
+        for(int i = 0; i < arr.length;i++) {
+            for (int j = 0; j < arr.length;j++) {
+                if (i == j) {
+                    remove(i);
+                    return;
+                }
+            }
+        }
+        System.err.println("err");;
+    }
 }

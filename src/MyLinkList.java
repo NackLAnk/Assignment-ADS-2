@@ -39,4 +39,6 @@ public interface MyLinkList<E> {
     // Replace the element at the specified position in this list
     // with the specified element and return the old element.
     Object set(int index, E e);
+
+
 }
