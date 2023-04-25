@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.Arrays;
 
 public class MyArrayList<T> implements MyList<T> {
@@ -109,16 +110,17 @@ public class MyArrayList<T> implements MyList<T> {
         Arrays.sort(arr, 0, size); //  sorts the elements of the MyArrayList instance in ascending order.
     }
     public void dublicateDeleater() {
-        //Object[] Darr = new Object[arr.length];
-
-        for(int i = 0; i < arr.length;i++) {
-            for (int j = 0; j < arr.length;j++) {
-                if (i == j) {
-                    remove(i);
-                    return;
+        int i2 = 0;
+        for (int p = 0; p < size; p++) {
+            for (int i = i2; i < arr.length; i++) {
+                for (int j = 0; j < arr.length; j++) {
+                    if (i == j) {
+                        remove(j);
+                        return;
+                    }
                 }
             }
+            i2++;
         }
-        System.err.println("err");;
     }
 }

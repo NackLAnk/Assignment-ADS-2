@@ -211,7 +211,7 @@ public class MyLinkedList<E> implements MyLinkList<E>{
         current.setElement(element);
         return oldElement;
     }
-    public void dublicateDeleater() {
+    /*public void dublicateDeleater() {
         //Object[] Darr = new Object[arr.length];
 
         for(int i = 0; i < tail.length;i++) {
@@ -224,4 +224,6 @@ public class MyLinkedList<E> implements MyLinkList<E>{
         }
         System.err.println("err");;
     }
+
+     */
 }
